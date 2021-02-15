@@ -1,0 +1,19 @@
+html{
+  scroll-behavior: smooth;
+}
+.card{
+  width:100%;
+}
+.card:hover{
+  border-left: 10px solid #0d6efd;
+}
+.todos{
+  overflow-y: auto;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  color: white;
+}
