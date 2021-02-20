@@ -9,9 +9,8 @@ function Navbar({ user }) {
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <Link href="/"><a className="navbar-brand"><i className="fas fa-list fa-2x"></i></a></Link>
+                    <Link href="/"><a className="navbar-brand"><i className="fas fa-list fa-2x"></i>Next-Todos</a></Link>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo03">
-
                         <div className="d-flex">
                             <input className="form-control mr-2" type="search" placeholder="Search" aria-label="Search" />
                             {user ?

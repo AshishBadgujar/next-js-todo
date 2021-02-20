@@ -38,7 +38,7 @@ export default function Home({ user, todos }) {
             <div className="input-group mb-3">
               <input type="text" className="form-control" placeholder="type here..." value={text} onChange={(e) => setText(e.target.value)} aria-describedby="basic-addon1" />
             </div>
-            <button type="submit" style={{ width: "100%" }} className="btn btn-primary"><i className="fas fa-plus"></i></button>
+            <button type="submit" style={{ width: "100%" }} className="btn btn-primary"><i className="fas fa-plus"></i>add</button>
           </form>
           :
           <h1>Login first</h1>
@@ -47,7 +47,7 @@ export default function Home({ user, todos }) {
           <div className="card mt-2" key={item._id}>
             <div className="card-body" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               {item.text}
-              <button type="button" className="btn" onClick={() => handleDelete(item._id)}><i className="fas fa-trash-alt"></i></button>
+              <button type="button" className="btn" onClick={() => handleDelete(item._id)}><i className="fas fa-trash-alt"></i>Delete</button>
             </div>
           </div>
         ))}
