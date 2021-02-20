@@ -2,16 +2,16 @@ import Axios from 'axios'
 import React, { useState } from 'react'
 import Navbar from '../components/navbar'
 import auth0 from '../helpers/auth0'
+import baseUrl from '../helpers/baseUrl'
 
 export default function Home({ user, todos }) {
-  console.log(user, "this is user")
   const [text, setText] = useState('')
   const [tasks, setTasks] = useState(todos)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await Axios.put(`http://localhost:3000/api/${user.sub}`, { text })
+      const res = await Axios.put(`${baseUrl}/api/${user.sub}`, { text })
       const res2 = res.data
       setTasks(res2)
       setText('')
@@ -20,7 +20,7 @@ export default function Home({ user, todos }) {
     }
   }
   const handleDelete = async (id) => {
-    const res = await Axios.delete(`http://localhost:3000/api/${user.sub}`, { data: { id } })
+    const res = await Axios.delete(`${baseUrl}/api/${user.sub}`, { data: { id } })
     const res2 = res.data
     if (res2.err) {
       console.log(res2.err)
@@ -44,7 +44,7 @@ export default function Home({ user, todos }) {
           <h1>Login first</h1>
         }
         {tasks.map(item => (
-          <div className="card mt-2 p-1" key={item._id}>
+          <div className="card mt-2" key={item._id}>
             <div className="card-body" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               {item.text}
               <button type="button" className="btn" onClick={() => handleDelete(item._id)}><i className="fas fa-trash-alt"></i></button>
@@ -61,7 +61,7 @@ export async function getServerSideProps(ctx) {
   var todos = []
   if (session) {
     try {
-      const res = await Axios.get(`http://localhost:3000/api/${session.user.sub}`)
+      const res = await Axios.get(`${baseUrl}/api/${session.user.sub}`)
       todos = res.data
     } catch (error) {
       console.log(error)
